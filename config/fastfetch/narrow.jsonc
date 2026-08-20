@@ -1,0 +1,70 @@
+// Compact layout for narrow (split-screen) terminals: no image logo, no
+// fixed-width box borders, since both wrap ugly once columns drop below
+// their fixed width.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small"
+  },
+  "display": {
+    "separator": " : "
+  },
+  "modules": [
+    {
+      "type": "os",
+      "key": "  󰣇 OS",
+      "format": "{2}",
+      "keyColor": "red"
+    },
+    {
+      "type": "kernel",
+      "key": "   Kernel",
+      "format": "{2}",
+      "keyColor": "red"
+    },
+    {
+      "type": "packages",
+      "key": "  󰏗 Packages",
+      "keyColor": "green"
+    },
+    {
+      "type": "terminal",
+      "key": "   Terminal",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wm",
+      "key": "  󱗃 WM",
+      "format": "{2}",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "cpu",
+      "format": "{1} @ {7}",
+      "key": "   CPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "gpu",
+      "format": "{1} {2}",
+      "key": "  󰊴 GPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "memory",
+      "key": "  󰍛 Memory ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "uptime",
+      "key": "  󱫐 Uptime ",
+      "keyColor": "red"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    },
+    "break"
+  ]
+}

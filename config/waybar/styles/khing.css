@@ -1,0 +1,8 @@
+/* khing (built-in HyDE preset) has no dedicated style of its own — it falls
+   back to defaults.css, whose global.css sets a flat 10px for everything.
+   This file exists solely to bump that up per user request (+4px). */
+@import "../../../.local/share/waybar/styles/defaults.css";
+
+* {
+    font-size: 14px;
+}

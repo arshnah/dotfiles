@@ -1,0 +1,7 @@
+{
+	"custom/power": {
+		"format": "󰤄",
+		"on-click": "kitty -e ~/.config/waybar/mechabar-assets/scripts/power",
+		"tooltip-format": "Power Menu"
+	}
+}
