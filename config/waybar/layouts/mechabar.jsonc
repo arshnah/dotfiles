@@ -31,7 +31,7 @@
         "hyprland/workspaces",
         "custom/right#bg-1",
 
-        "hyprland/window",
+        "custom/window",
         "mpris"
     ],
 

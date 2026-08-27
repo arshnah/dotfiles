@@ -86,6 +86,15 @@ hl.config({
 		-- default action) actually switch you to its workspace, instead of
 		-- being silently ignored while you're elsewhere.
 		focus_on_activate = true,
+		-- HyDE's default (5) is trigger-happy on winit/eframe apps (aniani-rust
+		-- in particular): the "Application Not Responding" dialog fires while
+		-- the process is provably idle underneath (low CPU, every thread
+		-- parked on a normal futex_wait/poll, no deadlock) -- confirmed
+		-- directly, repeatedly, by checking process/thread state at the exact
+		-- moment the dialog appears. A missed xdg_wm_base ping burst, not an
+		-- actual hang. Raised so a brief ping delay doesn't get treated as
+		-- unresponsive.
+		anr_missed_pings = 20,
 	},
 	decoration = {
 		-- HyDE's theme.conf blur (size 6, 3 passes) reads coarse/blocky
@@ -123,7 +132,7 @@ hl.env("XCURSOR_SIZE", "24")
 
 -- External Dell SE2219HX sits physically to the left of the laptop panel.
 hl.monitor({ output = "HDMI-A-1", position = "0x0", mode = "1920x1080@60", scale = "1" })
-hl.monitor({ output = "eDP-1", position = "1920x0", mode = "1920x1080@60", scale = "1.5" })
+hl.monitor({ output = "eDP-1", position = "1920x0", mode = "1920x1080@60", scale = "1.25" })
 
 -- Overriding HyDE's default waybar-layout-switch binds (same combo, same
 -- description so the keybind hint still shows it under the same category)
@@ -154,6 +163,12 @@ hl.bind("SUPER + D", hl.dsp.exec_cmd("equibop"), {
 hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd("kitty --class endcord-float -e ~/Projects/endcord/run-local.sh"), {
 	description = "[Launcher|Apps] endcord (terminal Discord client, local kitty-image patch build)",
 })
+hl.bind("SUPER + SHIFT + A", hl.dsp.exec_cmd("~/Projects/aniani/target/release/aniani"), {
+	description = "[Launcher|Apps] aniani (multi-source search/watch/download, floating)",
+})
+hl.bind("SUPER + ALT + A", hl.dsp.exec_cmd("~/Projects/aniani/target/release/aniani"), {
+	description = "[Launcher|Apps] aniani (multi-source search/watch/download, floating) -- alt combo",
+})
 
 hl.window_rule({
 	name = "rmpc_float",
@@ -174,4 +189,27 @@ hl.window_rule({
 	float = true,
 	center = true,
 	size = "1000 800",
+})
+hl.window_rule({
+	name = "ani_cli_gui_float",
+	tag = "+ani_cli_gui_float",
+	match = {
+		class = "ani-cli-gui",
+	},
+	float = true,
+	center = true,
+	size = "380 560",
+})
+hl.window_rule({
+	name = "aniani_gui_float",
+	tag = "+aniani_gui_float",
+	match = {
+		class = "aniani-gui",
+	},
+	float = true,
+	center = true,
+	-- no fixed "size" here anymore -- aniani is a real desktop app now
+	-- (1280x800 default) with its own in-app compact-mode toggle that
+	-- resizes itself at runtime; a hardcoded windowrule size would just
+	-- fight that instead of merely setting the initial launch size.
 })

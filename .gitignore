@@ -1,3 +1,5 @@
 .zcompdump*
 *.cache
 __pycache__/
+config/zsh/.zsh_history
+config/waybar/layouts/backup/

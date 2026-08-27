@@ -21,6 +21,8 @@ alias goodnight='poweroff'
 alias ani-cli="$HOME/Projects/ani-cli-discord-rpc/ani-cli-rpc"
 alias ani-watch="$HOME/Projects/ani-cli-discord-rpc/venv/bin/python $HOME/Projects/ani-cli-discord-rpc/watch_notify.py"
 alias ani-binge="$HOME/Projects/ani-cli-discord-rpc/ani-binge"
+alias ani-gui="$HOME/Projects/ani-cli-discord-rpc/ani-gui"
+alias aniani="$HOME/Projects/aniani/aniani"
 # # Helpful aliases
 alias c='clear'                                                        # clear terminal
 alias l='eza -lh --icons=auto'                                         # long list
@@ -50,7 +52,7 @@ alias l='eza -lh --icons=auto'                                         # long li
 #  This is your file 
 # Add your configurations here
 # export EDITOR=nvim
-export EDITOR=code
+export EDITOR=zed
 
 # unset -f command_not_found_handler # Uncomment to prevent searching for commands not found in package manager
 
@@ -59,7 +61,8 @@ export EDITOR=code
 
 export PATH=$PATH:/home/arsh/.spicetify
 export PATH=$PATH:/home/arsh/Downloads/awrit/.bun/bin
-
+export PATH=$PATH:/home/arsh/go/bin
+alias mewsic="~/Projects/mewsic/target/debug/mewsic"
 # WakaTime terminal tracking — fires a heartbeat per command, backgrounded so
 # it never blocks the prompt. Throttled to one heartbeat per 2 min per
 # directory (wakatime-cli itself also dedupes within its own window).
@@ -73,3 +76,7 @@ preexec() {
       --entity "$PWD" --entity-type app --category "debugging" &>/dev/null &)
   fi
 }
+
+# opencode
+# source ~/.zshrc
+export PATH=/home/arsh/.opencode/bin:$PATH

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+info=$(hyprctl activewindow -j)
+class=$(jq -r '.class // empty' <<<"$info")
+title=$(jq -r '.title // empty' <<<"$info")
+
+if [ -z "$class" ]; then
+	echo "Desktop"
+	exit 0
+fi
+
+case "$class" in
+"dev.zed.Zed") name="Zed" ;;
+"firefox") name="Firefox" ;;
+"zen") name="Zen" ;;
+"kitty") name="Kitty" ;;
+"discord" | "vesktop" | "equibop") name="Discord" ;;
+"Spotify" | "spotify") name="Spotify" ;;
+"code" | "code-url-handler") name="VS Code" ;;
+"org.telegram.desktop") name="Telegram" ;;
+"thunar") name="Files" ;;
+*) name="$class" ;;
+esac
+
+if [[ "$title" == "$name"* ]]; then
+	title="${title#"$name"}"
+	title="${title# }"
+	title="${title#|}"
+	title="${title#-}"
+	title="${title# }"
+fi
+
+if [ -n "$title" ] && [ "$title" != "$name" ]; then
+	echo "$name - $title"
+else
+	echo "$name"
+fi
