@@ -9,7 +9,7 @@ fastfetch --config hyde/*.jsonc
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "source": "\"$(hyde-shell fastfetch logo)\"",
+    "source": "~/.config/fastfetch/logo/aisaka.icon",
     "height": 18
   },
   "display": {
@@ -115,8 +115,29 @@ fastfetch --config hyde/*.jsonc
       "keyColor": "red"
     },
     {
+      "type": "battery",
+      "key": "  󰁹 Battery ",
+      "keyColor": "green"
+    },
+    {
+      "type": "localip",
+      "key": "  󰩟 Local IP ",
+      "format": "{ifname}: {ipv4}",
+      "keyColor": "cyan"
+    },
+    {
       "type": "custom",
       "format": "└──────────────────────────────────────────┘"
+    },
+    {
+      "type": "player",
+      "key": "  󰝚 Player ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "media",
+      "key": "  󰎈 Now Playing ",
+      "keyColor": "magenta"
     },
     {
       "type": "colors",

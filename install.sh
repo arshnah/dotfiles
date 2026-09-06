@@ -20,15 +20,8 @@ link() {
 echo "== config/* =="
 for d in "$DOTFILES"/config/*/; do
   name="$(basename "$d")"
-  [ "$name" = "hyde" ] && continue
   link "$d" "$HOME/.config/$name"
 done
-
-echo "== hyde (config.toml, wallbash, and just the Minimal theme — the rest ship with HyDE itself) =="
-link "$DOTFILES/config/hyde/config.toml" "$HOME/.config/hyde/config.toml"
-link "$DOTFILES/config/hyde/wallbash" "$HOME/.config/hyde/wallbash"
-mkdir -p "$HOME/.config/hyde/themes"
-link "$DOTFILES/config/hyde/themes/Minimal" "$HOME/.config/hyde/themes/Minimal"
 
 echo "== local/bin =="
 for f in "$DOTFILES"/local/bin/*; do
@@ -39,4 +32,4 @@ done
 
 echo
 echo "Done. Reload with: hyprctl reload"
-echo "(HyDE, Hyprland, waybar, kitty, rofi etc. themselves must already be installed — see README.)"
+echo "(end-4/dots-hyprland, Hyprland, quickshell, kitty, rofi etc. themselves must already be installed — see README.)"
