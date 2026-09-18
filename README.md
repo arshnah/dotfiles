@@ -11,7 +11,7 @@ into place the same way as the other branches, via `install.sh`.
 | Path | What |
 |---|---|
 | `config/hypr` | Hyprland config (flat `hyprland.conf`, not end-4's lua structure), `hypridle.conf`, `style.conf`, `ipclistener.zsh` |
-| `config/quickshell` | The bar, launcher, lockscreen, notifications, screenshot overlay — replaces end-4's `ii` shell entirely |
+| `config/quickshell` | The bar, launcher, lockscreen, notifications, screenshot overlay, replacing end-4's `ii` shell entirely |
 | `config/kitty` | Terminal config + gruvbox themes |
 | `config/nvim` | Neovim config (bundled with this theme, replaces the LazyVim one) |
 | `config/fastfetch` | Terminal system-info fetch, custom ASCII art |
@@ -21,7 +21,7 @@ into place the same way as the other branches, via `install.sh`.
 
 Everything else (`btop`, `dunst`, `gtk-3.0`, `qt5ct`/`qt6ct`, `Kvantum`,
 `fontconfig`, `nwg-look`, `xsettingsd`, `environment.d`, `pypr`,
-`wlogout`, `starship`) is untouched from the base branch — rivendell's
+`wlogout`, `starship`) is untouched from the base branch: rivendell's
 upstream repo doesn't configure any of those, and its hyprland.conf doesn't
 call rofi or wlogout, so those pieces are effectively unused on this branch
 but left in place in case they're wanted (e.g. wlogout for the logout menu).
@@ -37,15 +37,15 @@ exist here).
 On Arch/CachyOS, on top of what the base branches already install
 (hyprland, quickshell, qt6-5compat, kitty, socat, grim, hyprpicker, upower,
 brightnessctl, xdg-desktop-portal-hyprland/gtk, wireplumber/pipewire stack,
-mpd — all already present from the end-4 setup):
+mpd, all already present from the end-4 setup):
 
 ```bash
 sudo pacman -S --needed mpc sox
 yay -S --needed mpd-mpris hyprpolkitagent-git ttf-bigblueterminal-nerd
 ```
 
-**Plugins** — rivendell ships two Hyprland plugins as separate repos, built
-via `hyprpm` against your installed Hyprland version:
+**Plugins**: rivendell ships two Hyprland plugins as separate repos, built
+via `hyprpm` against your installed Hyprland version.
 
 ```bash
 hyprpm update
@@ -56,7 +56,7 @@ hyprpm enable imgborders
 ```
 
 `hyprpm` builds these against Hyprland's headers for your exact installed
-version — if `hyprpm add` fails to build, it's almost always a Hyprland
+version. If `hyprpm add` fails to build, it's almost always a Hyprland
 version mismatch between what the plugin targets and what's installed
 (`hyprctl version`), not a config problem here.
 

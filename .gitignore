@@ -3,3 +3,5 @@
 __pycache__/
 config/zsh/.zsh_history
 config/waybar/layouts/backup/
+config/kitty/current-theme.conf
+config/kitty/*.bak
