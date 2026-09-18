@@ -1,83 +1,24 @@
-# Powerlevel10k instant prompt (disabled, using starship now)
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+PROMPT="%~ "
 
-# Add user configurations here
-# For HyDE to not touch your beloved configurations,
-# we added a config file for you to customize HyDE before loading zshrc
-# Edit $ZDOTDIR/.user.zsh to customize HyDE before loading zshrc
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+unsetopt beep
 
-#  Plugins 
-# oh-my-zsh plugins are loaded  in $ZDOTDIR/.user.zsh file, see the file for more information
+zstyle :compinstall filename "~/.zshrc"
+autoload -Uz compinit && compinit
+zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 
-#  Aliases 
-# Override aliases here in '$ZDOTDIR/.zshrc' (already set in .zshenv)
-alias vps="ssh root@213.210.36.47 -p 8022"
-alias vim='nvim'
-alias goodnight='poweroff'
-alias ani-cli="$HOME/Projects/ani-cli-discord-rpc/ani-cli-rpc"
-alias ani-watch="$HOME/Projects/ani-cli-discord-rpc/venv/bin/python $HOME/Projects/ani-cli-discord-rpc/watch_notify.py"
-alias ani-binge="$HOME/Projects/ani-cli-discord-rpc/ani-binge"
-alias ani-gui="$HOME/Projects/ani-cli-discord-rpc/ani-gui"
-alias aniani="$HOME/Projects/aniani/aniani"
-# # Helpful aliases
-alias c='clear'                                                        # clear terminal
-alias l='eza -lh --icons=auto'                                         # long list
-# alias ls='eza -1 --icons=auto'                                         # short list
-# alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-# alias ld='eza -lhD --icons=auto'                                       # long list dirs
-# alias lt='eza --icons=auto --tree'                                     # list folder as tree
-# alias un='$aurhelper -Rns'                                             # uninstall package
-# alias up='$aurhelper -Syu'                                             # update system/package/aur
-# alias pl='$aurhelper -Qs'                                              # list installed package
-# alias pa='$aurhelper -Ss'                                              # list available package
-# alias pc='$aurhelper -Sc'                                              # remove unused cache
-# alias po='$aurhelper -Qtdq | $aurhelper -Rns -'                        # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-# alias vc='code'                                                        # gui code editor
-# alias fastfetch='fastfetch --logo-type kitty'
+alias ls="ls -a --color=auto"
+alias grep="grep --color=auto"
 
-# # Directory navigation shortcuts
-# alias ..='cd ..'
-# alias ...='cd ../..'
-# alias .3='cd ../../..'
-# alias .4='cd ../../../..'
-# alias .5='cd ../../../../..'
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^H" backward-kill-word
+bindkey "^[[3;5~" kill-word
 
-# # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-# alias mkdir='mkdir -p'
-
-#  This is your file 
-# Add your configurations here
-# export EDITOR=nvim
-export EDITOR=zed
-
-# unset -f command_not_found_handler # Uncomment to prevent searching for commands not found in package manager
-
-# Powerlevel10k (disabled, using starship now)
-# [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-export PATH=$PATH:/home/arsh/.spicetify
-export PATH=$PATH:/home/arsh/Downloads/awrit/.bun/bin
-export PATH=$PATH:/home/arsh/go/bin
-export PATH=$PATH:/home/arsh/.local/bin
-export PATH=$PATH:/home/arsh/.cargo/bin
-# WakaTime terminal tracking — fires a heartbeat per command, backgrounded so
-# it never blocks the prompt. Throttled to one heartbeat per 2 min per
-# directory (wakatime-cli itself also dedupes within its own window).
-zmodload zsh/datetime
-_wakatime_last_ping=0
-preexec() {
-  local now=$EPOCHSECONDS
-  if (( now - _wakatime_last_ping > 120 )); then
-    _wakatime_last_ping=$now
-    (~/.wakatime/wakatime-cli --write --plugin "zsh-wakatime/1.0.0" \
-      --entity "$PWD" --entity-type app --category "debugging" &>/dev/null &)
-  fi
-}
-
-# opencode
-# source ~/.zshrc
-export PATH=/home/arsh/.opencode/bin:$PATH
-
-eval "$(starship init zsh)"
+eval "$(ssh-agent -s)" > /dev/null
+ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
