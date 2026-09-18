@@ -30,6 +30,17 @@ for f in "$DOTFILES"/local/bin/*; do
   chmod +x "$HOME/.local/bin/$name"
 done
 
+echo "== optional theme wallpapers =="
+for name in StarWars Kawaii; do
+  src="$DOTFILES/wallpapers/$name"
+  dest="$HOME/Pictures/Wallpapers/$name"
+  [ -d "$src" ] || continue
+  mkdir -p "$dest"
+  cp -n "$src"/* "$dest"/ 2>/dev/null || true
+  echo "copied $name wallpapers -> $dest"
+done
+
 echo
 echo "Done. Reload with: hyprctl reload"
 echo "(end-4/dots-hyprland, Hyprland, quickshell, kitty, rofi etc. themselves must already be installed — see README.)"
+echo "Optional themes: run 'arsh-theme starwars' or 'arsh-theme kawaii' (see README)."

@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
 # Picks a random image for the rofi app-launcher sidebar. Source images live
-# in ~/.config/rofi/assets/launcher-images/ (any of them, including gifs —
-# only the first frame of a gif is used, rofi cannot animate).
+# in ~/.config/rofi/assets/launcher-images/active/ (a symlink to default/,
+# starwars/, or kawaii/ — arsh-theme repoints it), including gifs — only the
+# first frame of a gif is used, rofi cannot animate.
 # Pre-crops/caches each source to the sidebar's aspect ratio (1222x1920) so
 # rofi never has to guess how to crop it (it doesn't center well on its own).
 
 set -euo pipefail
 
-SRC_DIR="$HOME/.config/rofi/assets/launcher-images"
+SRC_DIR="$HOME/.config/rofi/assets/launcher-images/active"
 CACHE_DIR="$HOME/.cache/rofi/launcher-images"
 TARGET="$HOME/.config/rofi/assets/launcher-side.png"
 
 mkdir -p "$CACHE_DIR"
 
-mapfile -t sources < <(find "$SRC_DIR" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \) 2>/dev/null)
+mapfile -t sources < <(find -L "$SRC_DIR" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \) 2>/dev/null)
 
 if [ "${#sources[@]}" -eq 0 ]; then
     exit 0

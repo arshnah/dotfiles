@@ -26,7 +26,10 @@ symlinked into place with `install.sh`. No secrets, no caches, no app data.
 | `config/fastfetch` | Terminal system-info fetch |
 | `config/environment.d` | Cursor size/theme env vars |
 | `config/nvim` | Neovim (LazyVim-based) |
-| `local/bin` | `rofi-launcher-pick.sh` (random launcher sidebar image) |
+| `config/hypr/custom/looks` | Optional decoration presets (`default`, `starwars`, `kawaii`), see below |
+| `config/hypr/hyprlock/{StarWars,Kawaii}.conf` | Matching optional hyprlock presets |
+| `wallpapers/{StarWars,Kawaii}` | Curated wallpapers for the optional themes |
+| `local/bin` | `rofi-launcher-pick.sh` (random launcher sidebar image), `arsh-theme` (theme switcher) |
 
 The bar/panels themselves are [quickshell](https://quickshell.outfoxxed.me)
 running end-4's `ii` shell config, which lives in its own repo at
@@ -73,3 +76,26 @@ Everything is symlinked, not copied, so editing the files in this repo
 changes them live. Anything already at a target path that isn't already one
 of these symlinks gets backed up first (`<path>.bak.<timestamp>`), never
 overwritten silently.
+
+## Optional themes
+
+Two extra desktop looks ship alongside the default, entirely opt-in:
+
+- **starwars** — lightsaber red/blue gradient border, sharp corners, tight
+  gaps, a black-and-gold opening-crawl hyprlock, and Star Wars art in the
+  rofi launcher sidebar.
+- **kawaii** — pink/lavender gradient border, heavily rounded windows, wide
+  gaps, a soft pastel hyprlock, and cute art in the rofi launcher sidebar.
+
+Switch with:
+
+```bash
+arsh-theme starwars   # or: kawaii / default
+```
+
+This swaps the Hyprland decoration (`custom/general.lua`), the hyprlock
+preset, and the rofi launcher sidebar's image pool, then reloads Hyprland.
+It does **not** touch your wallpaper — press `Ctrl+Super+T` to open the
+Quickshell wallpaper picker and pick one from `~/Pictures/Wallpapers/StarWars`
+or `~/Pictures/Wallpapers/Kawaii` (copy the ones from `wallpapers/` in this
+repo there first, or drop in your own).

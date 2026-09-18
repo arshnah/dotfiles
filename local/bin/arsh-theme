@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Switches between optional desktop looks (Hyprland decoration + hyprlock
+# preset). Wallpaper isn't touched here — press Ctrl+Super+T to open the
+# Quickshell wallpaper picker and pick one from the matching folder under
+# ~/Pictures/Wallpapers/, since Hyprland/Quickshell don't expose a headless
+# "set wallpaper to this exact file" command to script against safely.
+set -euo pipefail
+
+CONFIG="$HOME/.config"
+NAME="${1:-}"
+
+usage() {
+  echo "usage: arsh-theme <starwars|kawaii|default>"
+  echo
+  echo "available:"
+  echo "  starwars  - lightsaber red/blue border, sharp edges, Star Wars hyprlock"
+  echo "  kawaii    - pink/lavender border, soft rounded windows, kawaii hyprlock"
+  echo "  default   - restores the stock illogical-impulse look"
+  exit 1
+}
+
+[ -z "$NAME" ] && usage
+
+case "$NAME" in
+  starwars) LOOK="starwars.lua"; LOCK="StarWars.conf"; WALLPAPER_DIR="StarWars"; LAUNCHER="starwars" ;;
+  kawaii)   LOOK="kawaii.lua";   LOCK="Kawaii.conf";   WALLPAPER_DIR="Kawaii";   LAUNCHER="kawaii" ;;
+  default)  LOOK="default.lua"; LOCK="HyDE.conf";      WALLPAPER_DIR="";        LAUNCHER="default" ;;
+  *) usage ;;
+esac
+
+LOOK_SRC="$CONFIG/hypr/custom/looks/$LOOK"
+if [ ! -f "$LOOK_SRC" ]; then
+  echo "missing $LOOK_SRC — is dotfiles installed? (see install.sh)" >&2
+  exit 1
+fi
+
+cp "$LOOK_SRC" "$CONFIG/hypr/custom/general.lua"
+echo "source = ./$LOCK" > "$CONFIG/hypr/hyprlock/theme.conf"
+echo "applied $NAME look"
+
+LAUNCHER_IMAGES="$CONFIG/rofi/assets/launcher-images"
+if [ -d "$LAUNCHER_IMAGES/$LAUNCHER" ]; then
+  ln -sfn "$LAUNCHER" "$LAUNCHER_IMAGES/active"
+  echo "switched rofi launcher art to $LAUNCHER"
+  if command -v rofi-launcher-pick.sh >/dev/null 2>&1; then
+    rofi-launcher-pick.sh || echo "rofi-launcher-pick.sh failed — it'll retry next launcher open" >&2
+  fi
+fi
+
+if command -v hyprctl >/dev/null 2>&1; then
+  hyprctl reload >/dev/null 2>&1 && echo "reloaded Hyprland" || echo "hyprctl reload failed — reload manually" >&2
+fi
+
+if [ -n "$WALLPAPER_DIR" ]; then
+  echo
+  echo "wallpapers for this theme live in ~/Pictures/Wallpapers/$WALLPAPER_DIR"
+  echo "press Ctrl+Super+T to open the wallpaper picker and pick one"
+fi
