@@ -99,3 +99,27 @@ It does **not** touch your wallpaper — press `Ctrl+Super+T` to open the
 Quickshell wallpaper picker and pick one from `~/Pictures/Wallpapers/StarWars`
 or `~/Pictures/Wallpapers/Kawaii` (copy the ones from `wallpapers/` in this
 repo there first, or drop in your own).
+
+### Making your own theme
+
+A theme is just three files plus a folder of images, all named the same way:
+
+1. `config/hypr/custom/looks/<name>.lua` — Hyprland decoration overrides.
+   Copy `looks/default.lua` or `looks/kawaii.lua` as a starting point; the
+   keys that matter are `general.gaps_in/out`, `general.border_size`,
+   `general.col.active_border/inactive_border`, and `decoration.rounding`
+   / `decoration.blur.*`.
+2. `config/hypr/hyprlock/<Name>.conf` — a hyprlock preset. Copy any existing
+   one (`HyDE.conf`, `StarWars.conf`, ...) and change the colors/fonts/text;
+   keep the same `background`/`label`/`input-field` blocks.
+3. `config/rofi/assets/launcher-images/<name>/` — a folder of images
+   (any of png/jpg/jpeg/gif/webp) for the launcher sidebar.
+4. Optionally, `wallpapers/<Name>/` with a few wallpapers for it.
+
+Then add one line to `local/bin/arsh-theme`'s `case` statement:
+
+```bash
+<name>) LOOK="<name>.lua"; LOCK="<Name>.conf"; WALLPAPER_DIR="<Name>"; LAUNCHER="<name>" ;;
+```
+
+`arsh-theme <name>` will pick it up immediately — no other wiring needed.
