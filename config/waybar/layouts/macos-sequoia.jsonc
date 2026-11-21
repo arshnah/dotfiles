@@ -1,0 +1,87 @@
+{
+    // macOS 15 Sequoia inspired layout — adapted from
+    // https://github.com/kamlendras/waybar-macos-sequoia
+    // The upstream config is just standard sway/wlr modules with a light
+    // macOS-flavored style.css; the "custom macOS modules" mentioned in its
+    // README don't actually exist in the shipped config. Here we reuse
+    // HyDE's built-in modules (already equivalent or better) via the shared
+    // include line, and keep only the menu-bar-style left/center/right
+    // arrangement and the color palette from the source theme.
+    "layer": "top",
+    "output": ["*"],
+    "position": "top",
+    "height": 30,
+    "exclusive": true,
+    "passthrough": false,
+    "reload_style_on_change": true,
+    "include": [
+        "$XDG_CONFIG_HOME/waybar/modules/*json*",
+        "$XDG_CONFIG_HOME/waybar/includes/includes.json"
+    ],
+    "modules-left": [
+        "custom/hyde-menu",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "custom/cpuinfo",
+        "custom/gpuinfo",
+        "custom/updates",
+        "custom/keybindhint",
+        "idle_inhibitor",
+        "privacy",
+        "network",
+        "bluetooth",
+        "backlight",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "battery",
+        "tray",
+        "custom/wallchange",
+        "custom/theme",
+        "custom/cliphist",
+        "clock",
+        "custom/power"
+    ],
+    // includes.json gets auto-regenerated (wiping edits there), so per-module
+    // overrides for this layout live here instead.
+    "custom/hyde-menu": {
+        "format": " ",
+        "tooltip-format": "Right-click for more HyDE options"
+    },
+    "hyprland/window": {
+        "format": "{class}",
+        "max-length": 24,
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 18
+    },
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "active-only": false,
+        "disable-scroll": false,
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "active": "●",
+            "default": "○"
+        },
+        "persistent-workspaces": {}
+    },
+    "tray": {
+        "icon-size": 16,
+        "icon-size-multiplier": 1.4
+    },
+    "privacy": {
+        "icon-size": 12,
+        "icon-size-multiplier": 1
+    },
+    "clock": {
+        "format": "{:%a %b %d  %I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    }
+}

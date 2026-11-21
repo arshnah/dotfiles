@@ -1,0 +1,222 @@
+/* "hancore-gruvbox" — adapted from HANCORE-linux/waybar-themes config/V2.
+   Static Gruvbox palette (github.com/morhetz/gruvbox), hardcoded to match the
+   source theme rather than wired to wallbash. */
+
+* {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 12px;
+  font-weight: bold;
+  min-height: 0px;
+}
+
+window#waybar {
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+#waybar.empty .modules-center {
+  opacity: 0;
+}
+
+tooltip {
+  opacity: 1;
+}
+
+#workspaces {
+  border-radius: 2px;
+  margin: 6px 3px;
+}
+
+#workspaces button {
+  padding: 0px 2px;
+  margin: 0 3px 0 0;
+  border-radius: 2px;
+  background-color: #3c3836;
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.8);
+  color: #ebdbb2;
+}
+
+#workspaces button.active {
+  background-color: #fabd2f;
+  color: #282828;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.8);
+}
+
+#workspaces button:hover {
+  background-color: #504945;
+  color: #fabd2f;
+}
+
+#tray,
+#window,
+#mpris,
+#cpu,
+#clock,
+#battery,
+#network,
+#memory,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#pulseaudio.microphone,
+#custom-updates,
+#custom-power,
+#idle_inhibitor,
+#custom-hyde-menu {
+  min-width: 14px;
+  margin: 6px 3px 6px 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.8);
+}
+
+#clock:hover,
+#tray:hover,
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#bluetooth:hover,
+#backlight:hover,
+#custom-hyde-menu:hover,
+#custom-updates:hover,
+#idle_inhibitor:hover,
+#network:hover,
+#pulseaudio:hover {
+  border-radius: 2px;
+  opacity: 0.9;
+  background-color: #504945;
+  color: #fabd2f;
+}
+
+#window {
+  background-color: #eadbb2;
+  color: #282828;
+}
+
+#custom-hyde-menu {
+  background-color: #3c3836;
+  color: #ebdbb2;
+}
+
+#custom-updates {
+  background-color: #fabd2f;
+  color: #282828;
+}
+
+#clock {
+  background-color: #3c3836;
+  color: #ebdbb2;
+}
+
+#idle_inhibitor {
+  background-color: #3c3836;
+  color: #ebdbb2;
+}
+
+#tray {
+  background-color: #3c3836;
+}
+
+#battery {
+  background-color: #458588;
+  color: #282828;
+}
+
+#cpu {
+  background-color: #fabd2f;
+  color: #282828;
+}
+
+#memory {
+  background-color: #076678;
+  color: #ebdbb2;
+}
+
+#network {
+  background-color: #689d6a;
+  color: #282828;
+}
+
+#pulseaudio,
+#pulseaudio.microphone {
+  background-color: #fb4934;
+  color: #282828;
+}
+
+#backlight {
+  background-color: #d3869b;
+  color: #282828;
+}
+
+#bluetooth {
+  background-color: #d65d0e;
+  color: #282828;
+}
+
+#custom-power {
+  background-color: #cc241d;
+  color: #ebdbb2;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+tooltip {
+  padding: 4px;
+  background-color: #3c3836;
+  border: 1px solid alpha(@foreground, 0.8);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+tooltip label {
+  color: #ebdbb2;
+  font-weight: normal;
+}
+
+#cpu.critical,
+#memory.critical,
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+  background-color: #fe8019;
+  color: #282828;
+}
+
+#mpris {
+  background-color: #d65d0e;
+  color: #101010;
+  animation: repeat;
+  animation-name: blink;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    color: #504945;
+  }
+}

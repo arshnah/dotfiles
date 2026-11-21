@@ -1,0 +1,223 @@
+/* "hancore-rosepine" — adapted from HANCORE-linux/waybar-themes config/V2.1.
+   Static Rosé Pine Dark palette (github.com/rose-pine/waybar), hardcoded
+   rather than wired to wallbash to preserve fidelity to the source theme. */
+
+@define-color base            #191724;
+@define-color surface         #1f1d2e;
+@define-color overlay         #26233a;
+@define-color muted           #6e6a86;
+@define-color subtle          #908caa;
+@define-color text            #e0def4;
+@define-color love            #eb6f92;
+@define-color gold            #f6c177;
+@define-color rose            #ebbcba;
+@define-color pine            #31748f;
+@define-color foam            #9ccfd8;
+@define-color iris            #c4a7e7;
+
+* {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 12px;
+  font-weight: bold;
+  min-height: 0px;
+}
+
+window#waybar {
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+#left1 {
+  background-color: @base;
+  border-radius: 8px;
+  border: 1px solid alpha(@text, 0.15);
+  margin-right: 8px;
+}
+
+#left2 {
+  margin-right: 8px;
+}
+
+#left3 {
+  background-color: @base;
+  border-radius: 8px;
+  border: 1px solid alpha(@text, 0.15);
+  color: @subtle;
+  margin-right: 8px;
+}
+
+.modules-center {
+  background-color: transparent;
+  color: @foam;
+}
+
+#right1 {
+  background-color: @base;
+  border-radius: 8px;
+  border: 1px solid alpha(@text, 0.15);
+}
+
+#right2 {
+  margin-left: 8px;
+  background-color: @base;
+  border-radius: 8px;
+  border: 1px solid alpha(@text, 0.15);
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+#waybar.empty .modules-center {
+  opacity: 0;
+}
+
+#mpris {
+  background-color: @base;
+  border-radius: 8px;
+  border: 1px solid alpha(@text, 0.15);
+  color: @love;
+  min-width: 16px;
+  margin: 0px 3px 0px 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+tooltip {
+  opacity: 1;
+}
+
+#workspaces {
+  background-color: @base;
+  border-radius: 8px;
+  border: 1px solid alpha(@text, 0.15);
+}
+
+#workspaces button {
+  padding: 3px;
+  border-radius: 2px;
+  background-color: transparent;
+  color: @text;
+  opacity: 1;
+}
+
+#workspaces button.active {
+  color: @love;
+  opacity: 1;
+}
+
+#workspaces button.empty {
+  color: alpha(@text, 0.4);
+  opacity: 0.45;
+  transition: all 0.15s ease-in-out;
+}
+
+#workspaces button.empty.active {
+  color: @love;
+}
+
+#tray,
+#window,
+#cpu,
+#clock,
+#battery,
+#network,
+#memory,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#pulseaudio.microphone,
+#custom-updates,
+#idle_inhibitor,
+#custom-hyde-menu {
+  min-width: 16px;
+  margin: 1px 3px 1px 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#custom-updates {
+  padding-left: 3px;
+}
+
+#custom-hyde-menu {
+  border-radius: 0;
+  border-right: 1px solid alpha(@text, 0.15);
+  color: @gold;
+  font-size: 14px;
+}
+
+#clock {
+  border-radius: 0;
+  border-right: 1px solid alpha(@text, 0.15);
+  color: @gold;
+}
+
+#bluetooth {
+  border-radius: 0;
+  border-right: 1px solid alpha(@text, 0.15);
+  color: @foam;
+}
+
+#memory {
+  border-radius: 0;
+  border-left: 1px solid alpha(@text, 0.15);
+  color: @gold;
+}
+
+#cpu {
+  color: @rose;
+}
+
+#battery {
+  color: @iris;
+}
+
+#backlight {
+  color: @foam;
+}
+
+#network {
+  color: @rose;
+}
+
+#pulseaudio,
+#pulseaudio.microphone {
+  color: @love;
+}
+
+#idle_inhibitor {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#tray {
+  color: @muted;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+tooltip {
+  padding: 4px;
+  background-color: @base;
+  border: 1px solid alpha(@text, 0.15);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+tooltip label {
+  color: @subtle;
+  font-weight: normal;
+}
