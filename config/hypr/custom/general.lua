@@ -19,7 +19,7 @@ hl.config({
 		dim_inactive = false,
 	},
 	animations = {
-		enabled = false,
+		enabled = true,
 	},
 	misc = {
 		focus_on_activate = true,
