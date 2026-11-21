@@ -11,12 +11,20 @@ hl.config({
 	},
 	decoration = {
 		blur = {
-			enabled = false,
+			enabled = true,
+			xray = true,
+			size = 4,
+			passes = 2,
+			new_optimizations = true,
+			noise = 0.0117,
+			contrast = 1.05,
+			vibrancy = 0.2,
+			popups = false,
 		},
 		shadow = {
 			enabled = false,
 		},
-		dim_inactive = false,
+		dim_inactive = true,
 	},
 	animations = {
 		enabled = true,
