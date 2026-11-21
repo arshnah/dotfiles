@@ -2,7 +2,6 @@
 -- The file name is for the sake of organization and does not matter
 -- See the corresponding files in ~/.config/hypr/hyprland for examples
 
-hl.unbind("SUPER + B")
 hl.bind("SUPER + B", hl.dsp.exec_cmd(
 	"env XDG_CONFIG_HOME=$HOME/.config/helium-gtk-override " ..
 	"HELIUM_USER_FLAGS='--ozone-platform=wayland --enable-features=WaylandWindowDecorations,UseOzonePlatform,VaapiVideoDecodeLinuxGL,WebRTCPipeWireCapturer,WebUIDarkMode --enable-zero-copy --use-gl=angle --use-angle=gl --enable-smooth-scrolling --force-dark-mode --disable-features=HardwareMediaKeyHandling' " ..
@@ -14,11 +13,7 @@ hl.bind("SUPER + B", hl.dsp.exec_cmd(
 hl.unbind("SUPER + SUPER_L")
 hl.unbind("SUPER + SUPER_R")
 
-hl.unbind("SUPER + A")
-hl.bind("SUPER + A", hl.dsp.global("quickshell:searchToggleRelease"), { description = "Shell: Toggle search/overview" })
-
-hl.unbind("SUPER + ALT + A")
-hl.bind("SUPER + ALT + A", hl.dsp.global("quickshell:sidebarLeftToggle"), { description = "Shell: Toggle left sidebar" })
+hl.bind("SUPER + A", hl.dsp.exec_cmd("pkill fuzzel || fuzzel"), { description = "Launcher: Toggle search" })
 
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("claude-desktop"), {
 	description = "[Launcher|Apps] Claude Desktop",

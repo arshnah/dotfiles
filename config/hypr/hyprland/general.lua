@@ -21,20 +21,6 @@ hl.gesture({
     direction = "horizontal",
     action = "workspace"
 })
-hl.gesture({
-    fingers = 4,
-    direction = "up",
-    action = function()
-        hl.dispatch(hl.dsp.global("quickshell:overviewWorkspacesToggle"))
-    end
-})
-hl.gesture({
-    fingers = 4,
-    direction = "down",
-    action = function()
-        hl.dispatch(hl.dsp.global("quickshell:overviewWorkspacesToggle"))
-    end
-})
 
 hl.config({
     gestures = {
@@ -69,6 +55,10 @@ hl.config({
         }
     },
     decoration = {
+        -- Global Window Transparency
+        active_opacity = 1,
+        inactive_opacity = 0.8,
+
         -- 2 = circle, higher = squircle, 4 = very obvious squircle
         -- Fuck clearly visible squircles. 100% Apple brainrot.
         rounding_power = 2.5,
@@ -82,7 +72,7 @@ hl.config({
             size = 10,
             passes = 3,
             brightness = 1,
-            noise = 0.05,
+            noise = 0.5,
             contrast = 0.89,
             vibrancy = 0.5,
             vibrancy_darkness = 0.5,
@@ -104,6 +94,7 @@ hl.config({
         dim_strength = 0.05,
         dim_special = 0.2
     },
+
     animations = {
         enabled = true
     },

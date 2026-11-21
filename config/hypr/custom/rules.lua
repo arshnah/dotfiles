@@ -4,7 +4,6 @@
 
 hl.layer_rule({ match = { namespace = "launcher" }, animation = "popin 95%" })
 hl.layer_rule({ match = { namespace = "overview" }, no_anim = false, animation = "popin 90%" })
-hl.layer_rule({ match = { namespace = "quickshell:overview" }, no_anim = false, animation = "popin 90%" })
 
 hl.window_rule({
 	name = "endcord_float",
