@@ -1,3 +1,5 @@
+package.path = os.getenv("HOME") .. "/.config/hypr/?/init.lua;" .. package.path
+
 -- This file sources other files in `hyprland` and `custom` folders
 -- You wanna add your stuff in files in `custom`
 
