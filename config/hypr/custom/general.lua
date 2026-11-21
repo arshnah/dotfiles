@@ -9,20 +9,22 @@ hl.config({
 			scroll_factor = 0.35,
 		},
 	},
-	misc = {
-		focus_on_activate = true,
-		anr_missed_pings = 20,
-	},
 	decoration = {
 		blur = {
-			size = 9,
-			passes = 4,
-			noise = 0.0117,
-			contrast = 1.05,
-			brightness = 1.0,
-			vibrancy = 0.2,
-			popups = true,
+			enabled = false,
 		},
+		shadow = {
+			enabled = false,
+		},
+		dim_inactive = false,
+	},
+	animations = {
+		enabled = false,
+	},
+	misc = {
+		vfr = true,
+		focus_on_activate = true,
+		anr_missed_pings = 20,
 	},
 })
 
