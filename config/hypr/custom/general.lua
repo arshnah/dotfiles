@@ -22,7 +22,6 @@ hl.config({
 		enabled = false,
 	},
 	misc = {
-		vfr = true,
 		focus_on_activate = true,
 		anr_missed_pings = 20,
 	},
