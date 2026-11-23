@@ -1,7 +1,0 @@
-{
-	"image#window": {
-		"exec": "~/.config/waybar/mechabar-assets/scripts/window-icon",
-		"interval": 1,
-		"size": 18
-	}
-}

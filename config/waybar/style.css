@@ -13,7 +13,7 @@
     /* Modified by Hyde */
 
     /* Modify/add style in ~/.config/waybar/styles/ */
-    @import "/home/arsh/.config/waybar/styles/mechabar.css";
+    @import "/home/arsh/.config/waybar/styles/hancore-gruvbox.css";
 
     /* Imports wallbash colors */
     @import "/home/arsh/.cache/hyde/wallbash/gtk.css";

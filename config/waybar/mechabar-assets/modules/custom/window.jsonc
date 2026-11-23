@@ -1,8 +1,0 @@
-{
-	"custom/window": {
-		"exec": "~/.config/waybar/mechabar-assets/scripts/window-title",
-		"interval": 1,
-		"max-length": 40,
-		"tooltip": false
-	}
-}
