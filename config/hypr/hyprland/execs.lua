@@ -5,6 +5,8 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("$HOME/.config/hypr/hyprland/scripts/start_geoclue_agent.sh")
     hl.exec_cmd("waybar")
     hl.exec_cmd("swaync")
+    hl.exec_cmd("nm-applet --indicator")
+    hl.exec_cmd("blueman-applet")
     hl.exec_cmd("$HOME/.config/hypr/custom/scripts/wallpaper.sh restore")
 
     -- Core components (authentication, lock screen, notification daemon)
